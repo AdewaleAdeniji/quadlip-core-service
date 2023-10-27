@@ -6,7 +6,7 @@ This Node.js application utilizes a microservices architecture to facilitate air
 
 - **Microservice Architecture**: The application is designed with a microservices architecture, allowing for modular and scalable development.
 
-- **User Service Integration**: The service leverages a separate User Service for user authentication and authorization, ensuring secure sign-in and sign-up functionality.
+- **User Service Integration**: The service leverages a separate User Service https://github.com/AdewaleAdeniji/microservices-user-service for user authentication and authorization, ensuring secure sign-in and sign-up functionality.
 
 - **JWT Token Authentication**: JSON Web Tokens (JWT) are employed to authenticate users and authorize access to protected routes.
 
