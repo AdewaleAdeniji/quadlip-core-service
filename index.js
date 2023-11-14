@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 const { loginUser, registerUser, UserProfile } = require("./controllers/UserController");
 const { validateUser, validateAPIKey } = require("./middlewares/auth");
 const { getTransactionHistory, fundWalletRequest, getPaymentRequestStatus, buyAirtime } = require("./controllers/WalletController");
-const { GetWalletAPI } = require("./controllers/APIController");
+const { GetWalletAPI, buyAirtimeAPI } = require("./controllers/APIController");
 
 app.use(cors({ origin: "*" }));
 app.use(bodyParser.json());
@@ -38,7 +38,7 @@ app.post("/wallet/spend/airtime", validateUser, buyAirtime);
 
 //api
 app.get("/api/wallet", validateAPIKey, GetWalletAPI)
-app.post("/api/spend/airtime", validateAPIKey, buyAirtime);
+app.post("/api/spend/airtime", validateAPIKey, buyAirtimeAPI);
 
 
 app.get("*", (_, res) => {

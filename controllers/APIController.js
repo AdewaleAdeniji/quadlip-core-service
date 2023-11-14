@@ -29,6 +29,7 @@ const GetWalletAPI = WrapHandler(async (req, res) => {
 const buyAirtimeAPI = WrapHandler(async (req, res) => {
   const userID = req.userID;
   const wallet = await GetWalletByWalletID(userID);
+  console.log(req.body)
   const val = validateRequest(req.body, ["amount", "phone"]);
   if (val) return res.status(400).send(val);
   const { amount, phone } = req.body;
