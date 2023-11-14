@@ -30,9 +30,7 @@ exports.validateAPIKey = async (req, res, next) => {
     if (!val) {
       return res.status(403).send({ message: "Invalid API key access" });
     }
-    console.log(req.originalUrl, appKey)
-    req.userID = val;
-    console.log(val);
-    //req.user = await getUserByID(val, appKey);
+    req.userID = val.userID;
+    req.user = val;
     next();
   };

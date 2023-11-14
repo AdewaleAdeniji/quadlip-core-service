@@ -37,10 +37,10 @@ exports.verifyToken = async (token) => {
 };
 exports.verifyAPIKey = async (publicKey, privateKey) => {
   //TODO: implement caching here
-  const user = getFromCache(publicKey + "-" + privateKey);
-  if (user) {
-    return user;
-  }
+  // const user = getFromCache(publicKey + "-" + privateKey);
+  // if (user) {
+  //   return user;
+  // }
   var config = {
     method: "get",
     url: apiConfig.USER_SERVICE_URL + "/key",

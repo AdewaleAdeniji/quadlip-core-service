@@ -5,7 +5,9 @@ const cors = require("cors");
 var bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const { loginUser, registerUser, UserProfile } = require("./controllers/UserController");
-const { validateUser } = require("./middlewares/auth");
+const { validateUser, validateAPIKey } = require("./middlewares/auth");
+const { getTransactionHistory, fundWalletRequest, getPaymentRequestStatus, buyAirtime } = require("./controllers/WalletController");
+const { GetWalletAPI } = require("./controllers/APIController");
 
 app.use(cors({ origin: "*" }));
 app.use(bodyParser.json());
@@ -26,6 +28,17 @@ app.post("/auth/register", registerUser);
 
 app.get("/user/profile", validateUser, UserProfile);
 
+app.get("/user/transactions", validateUser, getTransactionHistory);
+app.get("/user/fund/:amount", validateUser, fundWalletRequest);
+app.get("/user/request/:paymentID", validateUser, getPaymentRequestStatus);
+
+//spend
+
+app.post("/wallet/spend/airtime", validateUser, buyAirtime);
+
+//api
+app.get("/api/wallet", validateAPIKey, GetWalletAPI)
+app.post("/api/spend/airtime", validateAPIKey, buyAirtime);
 
 
 app.get("*", (_, res) => {
