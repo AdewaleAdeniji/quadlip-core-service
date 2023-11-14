@@ -38,7 +38,7 @@ app.post("/wallet/spend/airtime", validateUser, buyAirtime);
 
 //api
 app.get("/api/wallet", validateAPIKey, GetWalletAPI)
-app.post("/api/spend/airtime", validateAPIKey, buyAirtimeAPI);
+app.post("/api/spend/airtime/:phone/:amount", validateAPIKey, buyAirtimeAPI);
 
 
 app.get("*", (_, res) => {
